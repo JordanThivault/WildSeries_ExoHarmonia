@@ -8,9 +8,17 @@ require("./database/client").checkConnection();
 
 // Import the Express application from app/config.js
 const app = require("./app/config");
+const apiRouter = require('./app/routers/api/programs/router');
 
 // Get the port from the environment variables
 const port = process.env.APP_PORT;
+
+
+app.get('/', (req, res) => {
+  res.send('Welcome to Wild Series !');
+});
+
+app.use('/api', apiRouter);
 
 // Start the server and listen on the specified port
 app
